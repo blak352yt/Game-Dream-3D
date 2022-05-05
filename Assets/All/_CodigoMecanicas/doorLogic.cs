@@ -6,66 +6,79 @@ using DG.Tweening;
 
 public class doorLogic : MonoBehaviour
 {
-	public GameObject puerta;
-	public GameObject palanca;
-	//abrir puerta
-	public float speed;
-	public float distance;
+    public GameObject puerta;
+    public GameObject palanca;
+    //abrir puerta
+    public float speed;
+    public float distance;
 
-	//Cerrar la puerta
-	public float distanceCerrado;
-	public Vector3 rotationCerrado;
+    //Cerrar la puerta
+    public float distanceCerrado;
+    public Vector3 rotationCerrado;
 
-	public Vector3 rotation;
-	public float speedlevel;
+    public Vector3 rotation;
+    public float speedlevel;
 
-	public bool puertaAbierta;
+    public bool puertaAbierta;
 
-
-
-	private void OnTriggerStay(Collider other)
-	{
-		listoparausar();
-
-
-	}
-
-
-	public void listoparausar()
-	{
-		if (Keyboard.current.eKey.wasPressedThisFrame && puertaAbierta == false)
-		{
-			Debug.Log("Abrir puerta ");
-			puerta.transform.DOLocalMoveY(distance, speed);
-			palanca.transform.DOLocalRotate(rotation, speedlevel);
-			puertaAbierta = true;
+    public GameObject player;
 
 
 
-		}
-		else
-		{
-			//Cerrar la puerta
-			if (Keyboard.current.eKey.wasPressedThisFrame && puertaAbierta == true)
-			{
-				Debug.Log("cerrar puerta ");
-				puerta.transform.DOLocalMoveY(distanceCerrado, speed);
-				palanca.transform.DOLocalRotate(rotationCerrado, speedlevel);
-				puertaAbierta = false;
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject == player)
+        {
+            if (Keyboard.current.xKey.wasPressedThisFrame && puertaAbierta == false)
+            {
+                abrirpuerta();
+            }
+            if (Keyboard.current.xKey.wasPressedThisFrame && puertaAbierta == true)
+            {
+                cerrarlapuerta();
+            }
 
-			}
-		}
+        }
+
+    }
 
 
 
 
-		}
+    public void abrirpuerta()
+    {
 
-	public void insusable() { 
-	}
+        Debug.Log("Abrir puerta ");
+        puerta.transform.DOLocalMoveY(distance, speed);
+        palanca.transform.DOLocalRotate(rotation, speedlevel);
+
+        StartCoroutine(CoroutineAbierta());
 
 
+    }
+
+    public void cerrarlapuerta()
+    {
+        Debug.Log("cerrar puerta ");
+        puerta.transform.DOLocalMoveY(distanceCerrado, speed);
+        palanca.transform.DOLocalRotate(rotationCerrado, speedlevel);
+        StartCoroutine(CoroutineCerrar());
+
+    }
+
+    IEnumerator CoroutineAbierta()
+    {
+        //espera 0.5 segundos
+        yield return new WaitForSeconds(1f);
+        puertaAbierta = true;
+    }
+
+    IEnumerator CoroutineCerrar()
+    {
+        //espera 0.5 segundos
+        yield return new WaitForSeconds(1f);
+        puertaAbierta = false;
+    }
 
 }
-
 
