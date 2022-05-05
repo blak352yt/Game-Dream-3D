@@ -6,11 +6,12 @@ TagManager:
   tags:
   - CinemachineTarget
   - lever
+  - Interactuable
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Raycast Detect
   - Water
   - UI
   - UI 2
