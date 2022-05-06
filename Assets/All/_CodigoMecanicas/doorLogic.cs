@@ -26,6 +26,8 @@ public class doorLogic : MonoBehaviour
 
     bool Cerca;
 
+    public AudioSource PlaySound;
+
 
 
 
@@ -60,6 +62,7 @@ public class doorLogic : MonoBehaviour
         Debug.Log("Abrir puerta ");
         puerta.transform.DOLocalMoveY(distance, speed);
         palanca.transform.DOLocalRotate(rotation, speedlevel);
+        PlaySound.Play();
 
         StartCoroutine(CoroutineAbierta());
 
@@ -72,6 +75,7 @@ public class doorLogic : MonoBehaviour
         puerta.transform.DOLocalMoveY(distanceCerrado, speed);
         palanca.transform.DOLocalRotate(rotationCerrado, speedlevel);
         StartCoroutine(CoroutineCerrar());
+        PlaySound.Play();
 
     }
 
