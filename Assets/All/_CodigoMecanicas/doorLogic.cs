@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using UnityEngine;
 using DG.Tweening;
 
@@ -23,6 +24,10 @@ public class doorLogic : MonoBehaviour
 
     public GameObject player;
 
+    bool Cerca;
+
+
+    
 
 
     private void OnTriggerStay(Collider other)
@@ -39,13 +44,17 @@ public class doorLogic : MonoBehaviour
             }
 
         }
-
+        Cerca = true;
     }
 
+	private void OnTriggerExit(Collider other)
+	{
+        Cerca = false;
+	}
 
 
 
-    public void abrirpuerta()
+	public void abrirpuerta()
     {
 
         Debug.Log("Abrir puerta ");
@@ -80,5 +89,21 @@ public class doorLogic : MonoBehaviour
         puertaAbierta = false;
     }
 
+   public void UIclick()
+	{
+        if (puertaAbierta == false && Cerca == true)
+        {
+            abrirpuerta();
+        }
+        else
+        {
+            if (puertaAbierta == true && Cerca == true)
+            {
+                cerrarlapuerta();
+            }
+        }
+    }
 }
+
+
 

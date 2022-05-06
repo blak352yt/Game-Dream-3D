@@ -10,8 +10,9 @@ public class Teleporting : MonoBehaviour
 
 	void OnTriggerEnter (Collider Other)
 	{
-		Player.transform.position = TeleportTarget.transform.position;
 
+		Player.transform.position = TeleportTarget.transform.position;
+		Debug.Log("entrando0");
 
 	}
 
