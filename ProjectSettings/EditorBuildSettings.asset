@@ -6,14 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: "Assets/All/ScenesGame/LvL grabaci\xF3n.unity"
+    guid: f5c741056af7fb742889b855ae8373f7
+  - enabled: 1
     path: Assets/All/ScenesGame/Nivel 1 smonus 1.unity
     guid: 2fb13de24cd4828498f1a12e8d4c08cd
   - enabled: 1
     path: Assets/All/ScenesGame/Nivel 2 smonus.unity
     guid: c9ff0040e1fcecf4389eaebbe156136a
-  - enabled: 1
-    path: "Assets/All/ScenesGame/LvL grabaci\xF3n.unity"
-    guid: f5c741056af7fb742889b855ae8373f7
   - enabled: 0
     path: Assets/Otros/Scenes/Blocking1.unity
     guid: 17df73250d0ecbb46b5947ebc582021c
